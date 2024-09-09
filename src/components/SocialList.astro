@@ -19,7 +19,7 @@ const socialLinks: {
 	},
 	{
 		friendlyName: "email",
-		link: "mabvmex@gmail.com",
+		mailto: "mabvmex@gmail.com",
 		name: "mdi:email",
 	},
 ];
@@ -27,6 +27,23 @@ const socialLinks: {
 
 <div class="flex flex-wrap items-end gap-x-2">
 	<p>Github</p>
+	<ul class="flex flex-1 items-center gap-x-2 sm:flex-initial">
+		{
+			socialLinks.map(({ friendlyName, isWebmention, link, name }) => (
+				<li class="flex">
+					<a
+						class="inline-block sm:hover:text-link"
+						href={link}
+						rel={`noreferrer ${isWebmention ? "me authn" : ""}`}
+						target="_blank"
+					>
+						<Icon aria-hidden="true" class="h-8 w-8" focusable="false" name={name} />
+						<span class="sr-only">{friendlyName}</span>
+					</a>
+				</li>
+			))
+		}
+	<p>email</p>
 	<ul class="flex flex-1 items-center gap-x-2 sm:flex-initial">
 		{
 			socialLinks.map(({ friendlyName, isWebmention, link, name }) => (
